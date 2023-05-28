@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom'
 
 
 const Navigation = () => {
-  console.log("Hello Mofo");
   const nav_style = {
     listStyleType: "none",
     color: "white"
