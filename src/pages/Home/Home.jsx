@@ -73,6 +73,7 @@ const Home = () => {
     minHeight: '100vh',
     display: 'flex',
     alignItems: 'center',
+    overflowX: 'hidden',
   };
 
   const modal = {

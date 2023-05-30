@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound/NotFound';
 import Navigation from './components/Navigation';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Sidebar from './components/Sidebar';
-// import Addactivity from './components/AddActivity';
+import Addactivity from './components/AddActivity';
 
 const App = () => {
   let token = localStorage.getItem("Token")
@@ -26,13 +26,13 @@ const App = () => {
       <Route path="/" element={<Home />} />
       <Route path="/signup" element={<Sign_Up />} />
       <Route path="/login" element={<Login />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<Login />} />
     </Routes>
     </>
     :
     <Routes>
       <Route path="/dashboard" element={<Dashboard />} />
-      {/* <Route path="/addActivity" element={<Addactivity />} /> */}
+      <Route path="/addActivity" element={<Addactivity />} />
       
       <Route path="*" element={<NotFound />} />
     </Routes>

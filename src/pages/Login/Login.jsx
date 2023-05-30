@@ -205,7 +205,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import { loginUserApi } from "../../helper/api-util";
-
+import { toast, ToastContainer } from "react-toastify";
 const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -241,7 +241,7 @@ const Login = () => {
     });
 
     console.log("RES OBJ ==> ", res);
-
+    toast.error("User not registered!");
     if (res && res.status) {
       console.log(res.data.token);
       localStorage.setItem("Token", res.data.token);
@@ -253,6 +253,7 @@ const Login = () => {
 
   return (
     <div className="background-image">
+      <ToastContainer />
       <div className="container d-flex justify-content-center align-items-center">
         <div className="glass-effect p-4">
           <h1 className="text-center mb-4">Login</h1>

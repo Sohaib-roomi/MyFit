@@ -4,14 +4,18 @@ import {
     FaTh,
     FaBars,
     FaUserAlt,
-    FaCommentAlt,
+    FaSignOutAlt,
+    FaPlus,
     FaShoppingBag,
     FaThList
 }from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 
 const Sidebar = ({children}) => {
+
+    const navigate = useNavigate();
+
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     const listStyle = {
@@ -32,25 +36,20 @@ const Sidebar = ({children}) => {
         {
             path:"/AddActivity",
             name:"Add Activity",
-            icon:<FaUserAlt/>
+            icon: <FaPlus />
         },
 
         {
             path:"/login",
             name:"Logout",
-            icon:<FaCommentAlt/>
-        },
-        {
-            path:"/exercise",
-            name:"All Activities",
-            icon:<FaThList/>
+            icon: <FaSignOutAlt />
         }
     ]
     return (
         <div className="" style={sideStyle} >
            <div style={{width: isOpen ? "200px" : "50px"}} className="sidebar">
                <div className="top_section">
-                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Logo</h1>
+                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">MyFit</h1>
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
@@ -61,6 +60,7 @@ const Sidebar = ({children}) => {
                        <Link style={listStyle} to={item.path} key={index} className="link" activeclassName="active" onClick={()=>{
                             localStorage.clear("Token")
                             location.replace("/login")
+                            
                        }}>
                            <div className="icon">{item.icon}</div>
                            <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
